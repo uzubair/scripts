@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# A script to genenrate your network's QR code. 
-# 
+# A script to genenrate your network's QR code.
+#
 # Requires `qrencode` to be installed on your Mac.
 # You can install it using brew
 # `brew install qrencode`
@@ -15,6 +15,11 @@ usage() {
   """
   exit 2
 }
+
+if ! command -v qrencode &> /dev/null: then
+  echo "'qrencode' is required!"
+  exit 0
+fi
 
 while getopts ":hs:p:d:" opt; do
   case ${opt} in
